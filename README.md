@@ -42,13 +42,13 @@ A full-stack application that incentivizes recycling through a points-based rewa
 Create a .env file in the backend directory with the following variables:
 
 PORT=5002
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-TWILIO_ACCOUNT_SID=your_twilio_account_sid
-TWILIO_AUTH_TOKEN=your_twilio_auth_token
-TWILIO_PHONE_NUMBER=your_twilio_phone_number
-COMPANY_PHONE_NUMBER=your_company_phone_number
-NODE_ENV=development
+- MONGODB_URI=your_mongodb_connection_string
+- JWT_SECRET=your_jwt_secret
+- TWILIO_ACCOUNT_SID=your_twilio_account_sid
+- TWILIO_AUTH_TOKEN=your_twilio_auth_token
+- TWILIO_PHONE_NUMBER=your_twilio_phone_number
+- COMPANY_PHONE_NUMBER=your_company_phone_number
+- NODE_ENV=development
 
 ## Installation
 
