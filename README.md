@@ -41,7 +41,7 @@ A full-stack application that incentivizes recycling through a points-based rewa
 
 Create a .env file in the backend directory with the following variables:
 
-PORT=5002
+- PORT=5002
 - MONGODB_URI=your_mongodb_connection_string
 - JWT_SECRET=your_jwt_secret
 - TWILIO_ACCOUNT_SID=your_twilio_account_sid
