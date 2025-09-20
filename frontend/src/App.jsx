@@ -13,26 +13,20 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    // Check if user is authenticated and get admin status
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
-      // Fetch user profile to check admin status
       fetch(`${API_BASE_URL}/api/users/profile`, {
-        headers: {
-          ...getAuthHeader()
-        }
+        headers: { ...getAuthHeader() },
       })
-      .then(res => res.json())
-      .then(data => {
-        setIsAdmin(data.isAdmin || false);
-      })
-      .catch(err => {
-        console.error('Error fetching user profile:', err);
-        localStorage.removeItem('token');
-        setIsAuthenticated(false);
-        setIsAdmin(false);
-      });
+        .then((res) => res.json())
+        .then((data) => setIsAdmin(data.isAdmin || false))
+        .catch((err) => {
+          console.error("Error fetching user profile:", err);
+          localStorage.removeItem("token");
+          setIsAuthenticated(false);
+          setIsAdmin(false);
+        });
     }
   }, []);
 
@@ -41,21 +35,27 @@ function App() {
     setIsAdmin(adminStatus);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    setIsAdmin(false);
+  };
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        {isAuthenticated && <Navbar isAdmin={isAdmin} />}
-        <div className={`${isAuthenticated ? 'pt-16' : ''}`}>
+        {isAuthenticated && <Navbar isAdmin={isAdmin} onLogout={handleLogout} />}
+        <div className={`${isAuthenticated ? "pt-16" : ""}`}>
           <Routes>
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
                 !isAuthenticated ? (
                   <Auth onLoginSuccess={handleLoginSuccess} />
                 ) : (
                   <Navigate to={isAdmin ? "/admin" : "/dashboard"} />
                 )
-              } 
+              }
             />
             <Route
               path="/dashboard"
