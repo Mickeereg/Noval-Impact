@@ -19,7 +19,7 @@
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Mickeereg/Noval-Impact.git
    cd Noval-Impact
    ```
 
@@ -32,14 +32,14 @@
 3. **Frontend Setup**
    ```bash
    cd frontend
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 4. **Environment Variables**
    
    Create a `.env` file in the backend directory:
    ```env
-   MONGODB_URI=mongodb://localhost:27017/noval-impact
+   MONGODB_URI= 'You mongoDB string/url'
    JWT_SECRET=your-super-secret-jwt-key
    PORT=5002
    NODE_ENV=development
@@ -54,7 +54,7 @@
 2. **Start Backend Server**
    ```bash
    cd backend
-   npm run dev
+   npm start
    ```
    Server will run on `http://localhost:5002`
 
