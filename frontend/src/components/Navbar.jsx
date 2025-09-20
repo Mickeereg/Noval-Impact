@@ -1,12 +1,20 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { API_BASE_URL, getAuthHeader } from '../config/api';
 
-const Navbar = ({ isAdmin }) => {
+const Navbar = ({ isAdmin, onLogout }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path) => {
     return location.pathname === path;
   };
+
+  const handleLogOut = () => {
+    onLogout();   // update App state
+    navigate("/", { replace: true });
+  };  
+
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
@@ -46,7 +54,13 @@ const Navbar = ({ isAdmin }) => {
                 Admin
               </Link>
             )}
+
+            <button
+            onClick={handleLogOut}
+                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-blue-600 transition-colors"
+            >sign out</button>
           </div>
+          
         </div>
       </div>
     </nav>
